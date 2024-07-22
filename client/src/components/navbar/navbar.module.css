@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+
+.container a,
+.btn {
+    font-weight: var(--font-weight-link);
+}
+
+.container a {
+    font-size: var(--font-size-link);
+}
+
+.btn {
+    background-color: var(--bg);
+    color: var(--textColor);
+    padding: var(--padding-btn);
+    border-radius: var(--border-radius-btn);
+    cursor: pointer;
+    font-size: var(--font-size-btn);
+}
+
+.btn:hover {
+    background-color: var(--softBg);
+}

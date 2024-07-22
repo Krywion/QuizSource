@@ -1,0 +1,43 @@
+/* components/Hero.module.css */
+.hero {
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+}
+
+.content {
+    flex: 1;
+    padding-right: 1rem;
+}
+
+.image {
+    flex: 1;
+    padding-left: 1rem;
+}
+
+.image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.description {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.btn {
+    background-color: var(--primaryBlue);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
