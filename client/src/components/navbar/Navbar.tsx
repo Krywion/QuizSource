@@ -1,16 +1,18 @@
 import React from "react";
 import styles from "./navbar.module.css";
+import ThemeToggle from "@/components/themeToggle/ThemeToggle";
+import AuthLinks from "@/components/AuthLinks/AuthLinks";
 
 export default function Navbar() {
   return (
         <div className={styles.container}>
-            <div>
+            <div className={styles.logo}>
                 <a href="/">QuizSource</a>
             </div>
-            <div>
+            <ThemeToggle />
+            <div className={styles.links}>
                 <button className={styles.btn}>About</button>
-                <button className={styles.btn}>Sign in</button>
-
+                <AuthLinks />
             </div>
         </div>
   )

@@ -3,8 +3,9 @@ import styles from "./footer.module.css";
 
 export default function Footer() {
     return (
-        <div className={styles.container}>
-            Footer
-        </div>
+        <footer className={styles.footer}>
+            <p>&copy; 2024 QuizSource</p>
+        </footer>
+
     )
 }
