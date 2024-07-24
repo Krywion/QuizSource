@@ -47,12 +47,8 @@
         flex-direction: column;
     }
 
-    .content {
-        padding-right: 0;
-    }
-
-    .image {
-        padding-left: 0;
+    .content, .image {
+        padding: 0;
     }
 
     .title {

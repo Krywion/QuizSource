@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import styles from "./hero.module.css";
-import quiz__hero__jpg from "../assets/quiz-hero.jpg";
+import quizHeroImage from "../assets/quiz-hero.jpg";
 
 
 export default function Hero() {
@@ -19,7 +19,7 @@ export default function Hero() {
           </div>
           <div className={styles.image}>
                 <Image
-                    src={quiz__hero__jpg}
+                    src={quizHeroImage}
                     alt="QuizSource hero image"
                     width={400}
                     height={400}

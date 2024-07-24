@@ -15,11 +15,15 @@ export default function ThemeToggle() {
     console.log(theme);
 
     return (
-        <div className={styles.container} onClick={toggle}>
+        <div className={styles.container} onClick={toggle} style={
+            theme === "dark"
+                ? {background: "white"}
+                : {background: "#0f172a"}
+        }>
             <Image src={moon} alt="moon" width={14} height={14} />
             <div className={styles.ball} style={
                 theme === "dark"
-                    ? {left:1, background:"0f1172a"}
+                    ? {left:1, background:"#0f172a"}
                     : {right: 1, background:"white"}}>
 
             </div>
