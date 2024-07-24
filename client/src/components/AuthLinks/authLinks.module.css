@@ -1,0 +1,13 @@
+.btn {
+    background-color: var(--bg);
+    color: var(--textColor);
+    padding: var(--padding-btn);
+    border-radius: var(--border-radius-btn);
+    cursor: pointer;
+    font-size: var(--font-size-btn);
+    font-weight: var(--font-weight-link);
+}
+
+.btn:hover {
+    background-color: var(--softBg);
+}
