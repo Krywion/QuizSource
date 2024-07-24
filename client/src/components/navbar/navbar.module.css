@@ -22,8 +22,9 @@
     flex: 1;
     display: flex;
     gap: 1rem;
-    align-items: center;
     position: relative;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .container a {
