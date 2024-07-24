@@ -7,6 +7,7 @@ import sun from "@/assets/sun.png";
 import Image from "next/image";
 import {ThemeContext} from "@/context/ThemeContext";
 
+
 export default function ThemeToggle() {
 
     const {theme, toggle} = useContext(ThemeContext);
