@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./authLinks.module.css";
+import Link from "next/link";
 
 export default function AuthLinks() {
 
@@ -11,12 +12,11 @@ export default function AuthLinks() {
         <>
             {status === "notAuthenticated" ? (
                 <>
-                    <button className={styles.btn}>Sign in</button>
-                    <button className={styles.btn}>Sign up</button>
+                    <Link href="/login" className={styles.link}>Login</Link>
                 </>
             ) : (
                 <>
-                    <button className={styles.btn}>Sign out</button>
+                    <button className={styles.link}>Sign out</button>
                 </>
             )}
         </>
