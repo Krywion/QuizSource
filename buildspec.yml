@@ -7,13 +7,13 @@ phases:
   pre_build:
     commands:
       - echo Installing source NPM dependencies...
-      - cd /client
+      - cd client
       - npm install
   build:
     commands:
       - echo Build started on `date`
       - echo Compiling the Node.js code
-      - cd /client
+      - cd client
       - npm run build
   post_build:
     commands:
@@ -21,7 +21,7 @@ phases:
 artifacts:
   files:
     - '**/*'
-  base-directory: /client/build
+  base-directory: client/build
 
 cache:
   path:
