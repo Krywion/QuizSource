@@ -25,4 +25,4 @@ artifacts:
 
 cache:
   path:
-    - '/client/node_modules/**/*'
+    - 'client/node_modules/**/*'
