@@ -1,0 +1,28 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 10.8.1
+  pre_build:
+    commands:
+      - echo Installing source NPM dependencies...
+      - cd /client
+      - npm install
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Compiling the Node.js code
+      - cd /client
+      - npm run build
+  post_build:
+    commands:
+      - echo Build completed on `date`
+artifacts:
+  files:
+    - '**/*'
+  base-directory: /client/build
+
+cache:
+  path:
+    - '/client/node_modules/**/*'
