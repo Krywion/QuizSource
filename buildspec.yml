@@ -1,28 +1,36 @@
 version: 0.2
 
 phases:
-  install:
-    runtime-versions:
-      nodejs: 18
   pre_build:
     commands:
-      - echo Installing source NPM dependencies...
-      - cd client
-      - npm install
+      - echo "Starting the build"
+      - echo Logging in to Amazon ECR...
+      - aws --version
+      - REPOSITORY_URI=237194190827.dkr.ecr.eu-central-1.amazonaws.com/quizsource-client-container-repository
+      - aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin $REPOSITORY_URI
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
   build:
     commands:
       - echo Build started on `date`
-      - echo Compiling the Node.js code
-      - npm run build
+      - echo Building the Docker image...
+      - cd client
+      - docker build -t $REPOSITORY_URI:latest .
+      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
   post_build:
     commands:
-      - echo Build completed on `date`
-      - cd ..
-artifacts:
-  files:
-    - '**/*'
-  base-directory: client/build
+      - echo Build completed on 'date'
+      - echo Pushing the Docker images...
+      - docker push $REPOSITORY_URI:latest
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - echo Writing image definitions file...
+      - printf '[{"name":"quizsource-client-container","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+      - DOCKER_CONTAINER_NAME=quizsource-client-container-repository
+      - printf '[{"name":"%s","imageUri":"%s"}]' $DOCKER_CONTAINER_NAME $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+      - echo $DOCKER_CONTAINER_NAME
+      - echo printing imagedefinitions.json
+      - cat imagedefinitions.json
 
-cache:
-  path:
-    - 'client/node_modules/**/*'
+artifacts:
+    files:
+      - imagedefinitions.json
